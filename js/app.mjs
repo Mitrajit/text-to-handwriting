@@ -32,6 +32,9 @@ const setTextareaStyle = (attrib, v) => (pageEl.style[attrib] = v);
 /**
  * Add event listeners here, they will be automatically mapped with addEventListener later
  */
+ window.onbeforeunload = function(){
+  return 'Are you sure you want to leave?';
+};
 const EVENT_MAP = {
   '#generate-image-form': {
     on: 'submit',
@@ -192,11 +195,11 @@ fetch(
         (contributor) => /* html */ `
         <div class="contributor-profile shadow">
           <a href="${contributor.html_url}">
-            <img 
-              alt="GitHub avatar of contributor ${contributor.login}" 
-              class="contributor-avatar" 
-              loading="lazy" 
-              src="${contributor.avatar_url}" 
+            <img
+              alt="GitHub avatar of contributor ${contributor.login}"
+              class="contributor-avatar"
+              loading="lazy"
+              src="${contributor.avatar_url}"
             />
             <div class="contributor-username">${contributor.login}</div>
           </a>
